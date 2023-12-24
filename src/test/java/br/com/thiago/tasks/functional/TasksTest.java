@@ -15,11 +15,11 @@ import java.util.concurrent.TimeUnit;
 public class TasksTest {
 
     private WebDriver acessarAplicacao() throws MalformedURLException {
-        System.setProperty("webdriver.chrome.driver","/home/thiago/drivers/chromedriver-linux64/chromedriver");
+//        System.setProperty("webdriver.chrome.driver","/home/thiago/drivers/chromedriver-linux64/chromedriver");
 //        WebDriver driver = new ChromeDriver();
         DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
-        WebDriver driver = new RemoteWebDriver(new URL("http://172.18.0.1:4444/wd/hub"), desiredCapabilities);
-        driver.navigate().to("http://localhost:8001/tasks");
+        WebDriver driver = new RemoteWebDriver(new URL("http://192.168.0.18:4444/wd/hub"), desiredCapabilities);
+        driver.navigate().to("http://192.168.0.38:8001/tasks");
         driver.manage()
                 .timeouts()
                 .implicitlyWait(10, TimeUnit.SECONDS);
