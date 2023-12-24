@@ -74,9 +74,6 @@ public class TasksTest {
             //clicar no Add
             WebElement buttonAdd = driver.findElement(By.id("addTodo"));
             buttonAdd.click();
-            //escrever descrição
-            driver.findElement(By.id("task"))
-                    .sendKeys("");
             //escrever data
             driver.findElement(By.id("dueDate"))
                     .sendKeys("10/10/2024");
@@ -101,9 +98,6 @@ public class TasksTest {
             //escrever descrição
             driver.findElement(By.id("task"))
                     .sendKeys("Teste sem data");
-            //escrever data
-            driver.findElement(By.id("dueDate"))
-                    .sendKeys("");
             //clicar no Salvar
             WebElement buttonSave = driver.findElement(By.id("saveButton"));
             buttonSave.click();
