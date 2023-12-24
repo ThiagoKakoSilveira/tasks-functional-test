@@ -5,15 +5,20 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class TasksTest {
 
-    private WebDriver acessarAplicacao() {
+    private WebDriver acessarAplicacao() throws MalformedURLException {
         System.setProperty("webdriver.chrome.driver","/home/thiago/drivers/chromedriver-linux64/chromedriver");
-        WebDriver driver = new ChromeDriver();
+//        WebDriver driver = new ChromeDriver();
+        DesiredCapabilities desiredCapabilities = DesiredCapabilities.chrome();
+        WebDriver driver = new RemoteWebDriver(new URL("http://172.18.0.1:4444/wd/hub"), desiredCapabilities);
         driver.navigate().to("http://localhost:8001/tasks");
         driver.manage()
                 .timeouts()
@@ -22,7 +27,7 @@ public class TasksTest {
     }
 
     @Test
-    public void deverSalvarTask() {
+    public void deverSalvarTask() throws MalformedURLException {
         WebDriver driver = acessarAplicacao();
         try {
             //clicar no Add
@@ -44,7 +49,7 @@ public class TasksTest {
     }
 
     @Test
-    public void deverDarErroTaskComDataPassada() {
+    public void deverDarErroTaskComDataPassada() throws MalformedURLException {
         WebDriver driver = acessarAplicacao();
         try {
             //clicar no Add
@@ -68,7 +73,7 @@ public class TasksTest {
     }
 
     @Test
-    public void deverDarErroTaskSemDescricao() {
+    public void deverDarErroTaskSemDescricao() throws MalformedURLException {
         WebDriver driver = acessarAplicacao();
         try {
             //clicar no Add
@@ -89,7 +94,7 @@ public class TasksTest {
     }
 
     @Test
-    public void deverDarErroTaskSemData() {
+    public void deverDarErroTaskSemData() throws MalformedURLException {
         WebDriver driver = acessarAplicacao();
         try {
             //clicar no Add
